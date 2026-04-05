@@ -1,0 +1,32 @@
+in jenkins:
+manage jenkins-> cofigure credentials -> add credentials:
+system-> username and password : shalinib06 , 4321@shalini, id:dockerhub
+system-> secret file: c-users-shalini-.kube-config , id: kuberconfig
+
+create a pipeline item
+paste pipeline script
+
+
+git clone repo link
+
+in cmd:
+go to your project folder
+
+give : 
+1. docker build -t shalinib06/shalini-demo-deployment .
+(check docker images if build is successful)
+
+2. docker push shalinib06/shalini-demo-deployment
+
+3. kubectl apply -f deployment.yaml
+
+4.  http://localhost:30010 (change port if needed)
+kubectl port-forward service/shalini-demo-deploymentservice 9090:80   (change service name correctly (kubectl describe svc): to check name)
+
+
+5. optional cmd:  
+kubectl get pods
+kubectl get svc
+kubectl describe svc
+kubectl get deployment
+
